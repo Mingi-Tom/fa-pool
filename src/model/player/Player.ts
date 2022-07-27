@@ -1,17 +1,21 @@
-import {Agent} from "./Agent";
+import {Agent} from "../agent/Agent";
+import {Person} from "../Person";
+import {FreeAgent} from "../agent/FreeAgent";
 
-export class Player {
+export class Player extends Person{
   private team:string = 'FA';
   private contractPeriodMonth: number = 0;
-  private agent: Agent = new Agent('none');
+  private agent: Agent = new FreeAgent();
 
-  constructor(private name: string) {
+  constructor(name: string) {
+    super(name);
   }
 
   introduce(): void {
-    console.log(`이름 : ${this.name}`);
+    super.introduce();
     console.log(`소속팀 : ${this.team}`);
     console.log(`계약기간: ${this.contractPeriodMonth}`);
+    console.log(`에이전트: `);
     this.agent.introduce();
   }
 
